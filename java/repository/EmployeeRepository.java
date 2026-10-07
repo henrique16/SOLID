@@ -1,6 +1,7 @@
 package repository;
+import repository.dto.EmployeeDto;
 
 public interface EmployeeRepository {
-  void save(Employee employee);
-  Employee getById(String id);
+  void save(EmployeeDto employee);
+  EmployeeDto getById(String id);
 }

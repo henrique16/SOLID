@@ -2,11 +2,11 @@ package domain.employee;
 import domain.employee.IEmployee;
 
 public class EmployeeCFO implements IEmployee {
-  public Float calculatePay(Float hoursWorked, Float payPerHour) {
+  public Double calculatePay(Double hoursWorked, Double payPerHour) {
     return hoursWorked * payPerHour;
   }
 
-  public Float reportHours(Float hoursWorked) {
+  public Double reportHours(Double hoursWorked) {
     return hoursWorked;
   }
 }

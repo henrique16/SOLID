@@ -1,6 +1,6 @@
 package domain.employee;
 
 public interface IEmployee {
-  Float calculatePay(Float hoursWorked, Float payPerHour);
-  Float reportHours(Float hoursWorked);
+  Double calculatePay(Double hoursWorked, Double payPerHour);
+  Double reportHours(Double hoursWorked);
 }

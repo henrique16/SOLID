@@ -3,20 +3,20 @@ import domain.employee.IEmployee;
 
 public class Employee {
   private IEmployee employee;
-  public Float hoursWorked
-  public Float payPerHour
+  public Double hoursWorked;
+  public Double payPerHour;
 
-  public Employee(IEmployee employee, Float hoursWorked, Float payPerHour) {
+  public Employee(IEmployee employee, Double hoursWorked, Double payPerHour) {
     this.employee = employee;
     this.hoursWorked = hoursWorked;
     this.payPerHour = payPerHour;
   }
 
-  public Float calculatePay() {
+  public Double calculatePay() {
     return this.employee.calculatePay(this.hoursWorked, this.payPerHour);
   }
 
-  public Float reportHours() {
+  public Double reportHours() {
     return this.employee.reportHours(this.hoursWorked);
   }
 }
