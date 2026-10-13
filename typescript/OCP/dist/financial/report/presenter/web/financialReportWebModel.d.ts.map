@@ -1,0 +1,1 @@
+{"version":3,"file":"financialReportWebModel.d.ts","sourceRoot":"","sources":["../../../../../financial/report/presenter/web/financialReportWebModel.ts"],"names":[],"mappings":"AAAA,MAAM,MAAM,uBAAuB,GAAG;IACpC,MAAM,EAAE,MAAM,CAAC;IACf,WAAW,EAAE,MAAM,CAAC;IACpB,IAAI,EAAE,IAAI,CAAC;IACX,KAAK,EAAE,MAAM,CAAC;CACf,CAAA"}

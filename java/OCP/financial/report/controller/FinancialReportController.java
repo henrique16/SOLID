@@ -1,22 +1,22 @@
 package financial.report.controller;
 import financial.report.interfaces.FinancialReportAnswer;
 import financial.report.interfaces.FinancialReportRequest;
-import financial.report.interfaces.FinancialReportRequester;
+import financial.report.interfaces.IFinancialReportRequester;
 
 public class FinancialReportController {
-  private FinancialReportRequester financialReportRequester;
-  private FinancialReportPresenter financialReportPresenter;
+  private IFinancialReportRequester financialReportRequester;
+  private IFinancialReportPresenter financialReportPresenter;
 
   public FinancialReportController(
-    FinancialReportRequester financialReportRequester,
-    FinancialReportPresenter financialReportPresenter
+    IFinancialReportRequester financialReportRequester,
+    IFinancialReportPresenter financialReportPresenter
   ) {
     this.financialReportRequester = financialReportRequester;
     this.financialReportPresenter = financialReportPresenter;
   }
 
-  public <T extends FinancialReportRequest> void presentFinancialReport(T financialReportRequest) {
+  public <T extends FinancialReportRequest> String presentFinancialReport(T financialReportRequest) {
     FinancialReportAnswer financialReportAnswer = this.financialReportRequester.getFinancialReport(financialReportRequest);
-    this.financialReportPresenter.presentFinancialReport(financialReportAnswer);
+    return this.financialReportPresenter.presentFinancialReport(financialReportAnswer);
   }
 }

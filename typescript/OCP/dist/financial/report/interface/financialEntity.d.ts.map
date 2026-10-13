@@ -1,0 +1,1 @@
+{"version":3,"file":"financialEntity.d.ts","sourceRoot":"","sources":["../../../../financial/report/interface/financialEntity.ts"],"names":[],"mappings":"AAAA,MAAM,MAAM,eAAe,GAAG;IAC5B,EAAE,EAAE,MAAM,CAAC;IACX,MAAM,EAAE,MAAM,CAAC;IACf,WAAW,EAAE,MAAM,CAAC;CACrB,CAAC"}

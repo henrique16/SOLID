@@ -1,0 +1,1 @@
+{"version":3,"file":"financialReportPresenter.d.ts","sourceRoot":"","sources":["../../../../financial/report/controller/financialReportPresenter.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,qBAAqB,EAAE,MAAM,oCAAoC,CAAA;AAE1E,MAAM,WAAW,wBAAwB;IACvC,sBAAsB,CAAC,CAAC,SAAS,qBAAqB,EAAE,MAAM,EAAE,CAAC,GAAG,IAAI,CAAA;CACzE"}

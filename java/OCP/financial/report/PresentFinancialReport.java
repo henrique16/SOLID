@@ -1,17 +1,20 @@
 package financial.report;
 import financial.report.controller.FinancialReportController;
-import financial.report.controller.FinancialReportPresenter;
+import financial.report.controller.IFinancialReportPresenter;
 import financial.report.controller.FinancialReportPresenterType;
-import financial.report.interfaces.FinancialReportAnswer;
-import financial.report.interfaces.FinancialReportDataGateway;
+import financial.report.interfaces.IFinancialReportDataGateway;
 import financial.report.interfaces.FinancialReportGenerator;
 import financial.report.interfaces.FinancialReportRequest;
-import financial.report.interfaces.FinancialReportRequester;
+import financial.report.interfaces.IFinancialReportRequester;
+import financial.report.presenter.printPresenter.FinancialReportPrintPresenter;
 import financial.report.presenter.webPresenter.FinancialReportWebPresenter;
 import financial.report.repository.FinancialDataMap;
+import financial.report.view.pdfView.FinancialReportPrintView;
 import financial.report.view.webView.FinancialReportWebView;
+import interfaces.IJsonParser;
+import jsonParser.JsonParser;
 
-// Facade Pattern
+// Facade
 public class PresentFinancialReport {
   private FinancialReportPresenterType financialReportPresenterType;
   private FinancialReportRequest financialReportRequest;
@@ -22,47 +25,40 @@ public class PresentFinancialReport {
   ) {
     this.financialReportPresenterType = financialReportPresenterType;
     this.financialReportRequest = financialReportRequest;
-    this.execute();
   }
 
-  private void execute() {
-    FinancialReportDataGateway financialReportDataGateway = new FinancialDataMap();
-    FinancialReportRequester financialReportRequester = new FinancialReportGenerator(financialReportDataGateway);
-    FinancialReportPresenter financialReportPresenter;
-    
-    switch (this.financialReportPresenterType) {
-      case WEB:
-        FinancialReportWebView financialReportWebView = new FinancialReportWebView();
-        financialReportPresenter = new FinancialReportWebPresenter(financialReportWebView);
-        break;
-      case PDF:
-        financialReportPresenter = new D();
-        break;
-    
-      default:
-        financialReportWebView = new FinancialReportWebView();
-        financialReportPresenter = new FinancialReportWebPresenter(financialReportWebView);
-        break;
-    }
+  public String execute() {
+    IFinancialReportDataGateway financialReportDataGateway = new FinancialDataMap();
+    IFinancialReportRequester financialReportRequester = new FinancialReportGenerator(financialReportDataGateway);
+    IFinancialReportPresenter financialReportPresenter = this.mapPresenterByType(this.financialReportPresenterType);
 
     FinancialReportController financialReportController = new FinancialReportController(
       financialReportRequester,
       financialReportPresenter
     );
-    financialReportController.presentFinancialReport(this.financialReportRequest);
+    return financialReportController.presentFinancialReport(this.financialReportRequest);
   }
-}
 
-class B implements FinancialReportPresenter {
-  @Override
-  public <T extends FinancialReportAnswer> void presentFinancialReport(T financialReportAnswer) {
-    throw new UnsupportedOperationException("Unimplemented method 'presentFinancialReport'");
-  }
-}
+  private IFinancialReportPresenter mapPresenterByType(FinancialReportPresenterType financialReportPresenterType) {
+    IFinancialReportPresenter financialReportPresenter;
+    IJsonParser jsonParser = new JsonParser();
 
-class D implements FinancialReportPresenter {
-  @Override
-  public <T extends FinancialReportAnswer> void presentFinancialReport(T financialReportAnswer) {
-    throw new UnsupportedOperationException("Unimplemented method 'presentFinancialReport'");
+    switch (this.financialReportPresenterType) {
+      case WEB:
+        FinancialReportWebView financialReportWebView = new FinancialReportWebView(jsonParser);
+        financialReportPresenter = new FinancialReportWebPresenter(financialReportWebView);
+        break;
+      case PDF:
+        FinancialReportPrintView financialReportPrintView = new FinancialReportPrintView(jsonParser);
+        financialReportPresenter = new FinancialReportPrintPresenter(financialReportPrintView);
+        break;
+    
+      default:
+        financialReportWebView = new FinancialReportWebView(jsonParser);
+        financialReportPresenter = new FinancialReportWebPresenter(financialReportWebView);
+        break;
+    }
+
+    return financialReportPresenter;
   }
 }

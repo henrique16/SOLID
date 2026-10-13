@@ -1,0 +1,1 @@
+{"version":3,"file":"financialReportDataGateway.d.ts","sourceRoot":"","sources":["../../../../financial/report/interface/financialReportDataGateway.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,eAAe,EAAE,MAAM,mBAAmB,CAAC;AAEpD,MAAM,WAAW,0BAA0B;IACzC,sBAAsB,CAAC,WAAW,EAAE,MAAM,GAAG,OAAO,CAAC,eAAe,CAAC,CAAA;CACtE"}

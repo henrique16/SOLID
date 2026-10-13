@@ -1,9 +1,9 @@
 package financial.report.interfaces;
 
-public class FinancialReportGenerator implements FinancialReportRequester {
-  private FinancialReportDataGateway financialReportDataGateway;
+public class FinancialReportGenerator implements IFinancialReportRequester {
+  private IFinancialReportDataGateway financialReportDataGateway;
 
-  public FinancialReportGenerator(FinancialReportDataGateway financialReportDataGateway) {
+  public FinancialReportGenerator(IFinancialReportDataGateway financialReportDataGateway) {
     this.financialReportDataGateway = financialReportDataGateway;
   }
 
