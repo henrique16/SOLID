@@ -1,4 +1,4 @@
-import financial.apiRoute.FinancialApiRest;
+import financial.apiRest.FinancialApiRest;
 import financial.report.FinancialReport;
 import financial.report.controller.IFinancialReportPresenter;
 import financial.report.interfaces.FinancialReportGenerator;
